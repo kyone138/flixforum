@@ -3,21 +3,23 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <div className="registration">
-        <h1>Registration</h1>
-        <input type="text" placeholder='Username'/><br/>
-        <input type="text" placeholder='Password'/><br />
-        <input type="text" placeholder='email@adress.com'/><br/>
-        <button> Register</button>
-      </div>
-      <div className= "login">
-        <h1>Login</h1>
-        <input type="text" placeholder='Username' /> <br />
-        <input type="password" placeholder='Password' />
-        <button >Login</button>
-      </div>
-    </div>
+    <div class="login-page">
+  <div class="form">
+    <form class="register-form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+    <form class="login-form">
+      <input type="text" placeholder="username"/>
+      <input type="password" placeholder="password"/>
+      <button>login</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+  </div>
+</div>
   );
 }
 

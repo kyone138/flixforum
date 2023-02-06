@@ -16,7 +16,7 @@ export const Login = (props) => {
 
     const login = () => {
         Axios.post("http://localhost:3001/login", {
-          username: email,
+          email: email,
           password: pass,
         }).then((response) => {
             if(response.data.message) {

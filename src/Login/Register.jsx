@@ -3,13 +3,14 @@ import Axios from 'axios'
 import { Link } from "react-router-dom";
 
 export const Register = (props) => {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-    //const [name, setName] = useState('');
 
     const register = () => {
         Axios.post('http://localhost:3001/register', {
-          username: email,
+          username: name,
+          email: email,
           password: pass,
         }).then((response) => {
           console.log(response);
@@ -22,16 +23,13 @@ export const Register = (props) => {
         console.log(pass);
     }
 
-    // <label htmlFor="name">Full name</label>
-    //<input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="full Name" />
-                //onClick={register}
-                //onSubmit={handleSubmit}
-
     return (
     <div className="App">
         <div className="auth-form-container">
             <h2>Register</h2>
         <form className="register-form" >
+        <label htmlFor="name">username</label>
+        <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="username" />
             <label htmlFor="email">email</label>
             <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
             <label htmlFor="password">password</label>

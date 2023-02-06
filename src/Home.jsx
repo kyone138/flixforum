@@ -1,12 +1,7 @@
 import React from "react";
-// importing Link from react-router-dom to navigate to 
-// different end points.
-import { Link } from "react-router-dom";
-import Register  from "./Login/Register";
-import Login from './Login/Login';
-import { Button, ButtonGroup } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import './Home.css';
+import Search from './searchbar';
 /** Citations
  * Frontend Login Page: https://www.youtube.com/watch?v=Y-XW9m8qOis
  * Backend Login Page: https://www.youtube.com/watch?v=W-sZo6Gtx_E , https://www.youtube.com/watch?v=W8jySpfRUDY 
@@ -49,6 +44,9 @@ const Home = () => {
       <h1>Home Page:</h1>
       <br />
           {/* Endpoint to route to About component */}
+            <div classname='App'>
+              <Search/>
+            </div>
             <button type ="button" class = "btn success" onClick={() => navigate("/login")}>Log In</button>
     </div>
   );

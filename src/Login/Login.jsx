@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from 'axios'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Loginpage.css";
 
 
@@ -8,6 +8,7 @@ import "./Loginpage.css";
 export const Login = () => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+    const navigate = useNavigate();
 
     //added
     const [loginStatus, setLoginStatus] = useState("");
@@ -21,6 +22,7 @@ export const Login = () => {
                 setLoginStatus(response.data.message);
             } else {
                 setLoginStatus(response.data[0].username);
+                navigate('/');
             }
         });
     }

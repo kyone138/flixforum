@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import Axios from 'axios'
 import { Link } from "react-router-dom";
 
-export const Register = (props) => {
+export const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
 
     const register = () => {
         Axios.post('http://localhost:3001/register', {
-          username: name,
+          username: name,  
           email: email,
           password: pass,
         }).then((response) => {
@@ -17,19 +17,13 @@ export const Register = (props) => {
         });
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(email);
-        console.log(pass);
-    }
-
     return (
-    <div className="App">
+    <div className="App2">
         <div className="auth-form-container">
             <h2>Register</h2>
         <form className="register-form" >
-        <label htmlFor="name">username</label>
-        <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="username" />
+            <label htmlFor="name">username</label>
+            <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="username" />
             <label htmlFor="email">email</label>
             <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
             <label htmlFor="password">password</label>
@@ -37,8 +31,8 @@ export const Register = (props) => {
             <button onClick = {register} type="submit">Sign Up</button>
 
         </form>
+        <br></br>
         <Link to= "/login">Already have an account? Log In here.</Link>
-        {/*<button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>*/}
     </div>
     </div>
     )

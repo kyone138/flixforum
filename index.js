@@ -1,8 +1,6 @@
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
-const { getDefaultNormalizer } = require("@testing-library/react");
-const { Connection } = require("pg");
 
 const app = express();
 
@@ -37,15 +35,14 @@ app.post("/register", (req, res) => {
             console.log(err);
         }
         res.send(result);
+
+
     });
 });
 
 app.post("/login", (req, res) => {
-
     const email = req.body.email;
     const password = req.body.password;
-    //const username = "hello";
-    //const password = 123;
 
 
     db.query(

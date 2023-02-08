@@ -14,8 +14,7 @@ export const Search = () => {
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             console.log("clicked enter");
-            <SearchResult message = {searchInput}></SearchResult>
-            navigate("/searchResult");
+            navigate("/searchResult", {state: {message: searchInput}});
         }
     };
 
@@ -28,7 +27,6 @@ export const Search = () => {
             onChange={handleChange}
             onKeyUp={handleKeyPress}
             value={searchInput} />
-            <SearchResult message = {searchInput}></SearchResult>
         </>
 
     );

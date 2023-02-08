@@ -1,14 +1,19 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import Search from './searchbar';
 
 export default function SearchResult (props) {
 
-    console.log(props);
-
+    const result = useLocation();
+    console.log(result.state);
+    let query = ''
+    if (result.state) {
+        console.log(JSON.stringify(result.state.message))
+        query = JSON.stringify(result.state.message)
+    };
     return (
         <>
-        <h1>{props.message}</h1>
-        <h2>{'i am going to kill myself'}</h2>;
+        <h2>Search Input: {query}</h2>
         </>
     );
 };

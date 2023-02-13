@@ -6,10 +6,35 @@ import close from './close.svg';
 //Modal: https://medium.com/tinyso/how-to-create-a-modal-component-in-react-from-basic-to-advanced-a3357a2a716a
 
 export const Newpostmodal = (props) => {
+    // to use to grab forum_id from DB 
+    const show_title = "criminal minds"; 
+    const season_number = 1; 
+    const episode_number = 1;
+    //const forum_id = "1";
+
+    // getting user ID
+    const user_id = localStorage.getItem('member');
+    //console.log("user_id", user_id);
+
+    // getting post title and content 
     const [postInput, setPostInput] = useState("");
     const [postTitleInput, setPostTitleInput] = useState("");
+
     if(!props.show) {
         return null
+    }
+
+    const newpostmodal = () => {
+        console.log("inside new post modal and clicked submit");
+        Axios.post('http://localhost:3001/newpostmodal', {
+          posttitle: postTitleInput,  
+          postcontent: postInput,
+          userid: user_id,
+          showtitle: show_title,
+          season: season_number,
+          episode: episode_number,
+          //forum_id: forum_id,
+        })
     }
 
     const handleChangePostTitle = (e) => {
@@ -26,6 +51,7 @@ export const Newpostmodal = (props) => {
 
     return (
         <>
+        <form>
         <div className="modal">
             <div className="modal-content">
                 <div className="modal-header">
@@ -39,7 +65,8 @@ export const Newpostmodal = (props) => {
                     maxLength = "50"
                     placeholder="Enter your post title here"
                     onChange={handleChangePostTitle}
-                    value={postTitleInput} />
+                    value={postTitleInput} 
+                    required/>
                 </div>
                 <div className="modal-post">
                 <textarea
@@ -48,14 +75,15 @@ export const Newpostmodal = (props) => {
                     maxLength = "256"
                     placeholder="Enter your post here"
                     onChange={handleChangePost}
-                    value={postInput} />
+                    value={postInput}
+                    required/>
                 </div>
                 <div className="modal-footer">
-                  <button className="buttonsubmit">Submit</button>
-                    
+                  <button onClick = {newpostmodal} className="buttonsubmit">Submit</button>
                 </div>
             </div>
         </div>
+        </form>
         </>
     )
 

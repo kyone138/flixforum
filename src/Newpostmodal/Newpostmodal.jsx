@@ -7,6 +7,7 @@ import close from './close.svg';
 
 export const Newpostmodal = (props) => {
     // to use to grab forum_id from DB 
+    // need to grab from the actual froum page
     const show_title = "criminal minds"; 
     const season_number = 1; 
     const episode_number = 1;

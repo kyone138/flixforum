@@ -83,40 +83,120 @@ app.post("/login", async (req, res) => {
     }
 });
 
+ 
+// app.post("/newpostmodal", async (req, res) => {
+//     //const showtitle = req.body.showtitle;
+//     //const season = req.body.season;
+//     //const episode = req.body.episode;
+//     const showtitle = "criminal minds";
+//     const season = 1;
+//     const episode = 1;
+//     console.log(showtitle, season, episode);
+//     var dbforum_id = "";
+//     console.log("inside get");
+//     db.query(
+//         // check if the forum exists in the forums table
+//         "SELECT * FROM forums WHERE title = ? AND season = ? AND episode = ?",
+//         [showtitle, season, episode], 
+//         (err, result) => {
+//             if(err) {
+//                 console.log(err);
+//             }
+//             else {
+//                 //dbforum_id = result[0].forum_id;
+//                 //console.log(dbforum_id);
+//                 console.log(result);
+//                 //console.log(result);
+//             }
+//         });
 
-//submit new post 
+//     console.log("outside of db", dbforum_id);
+
+// });
+
 app.post("/newpostmodal", async (req, res) => {
     try {
         //console.log("inside of index of /newpostmodal");
         //info needed to grab the forumId from the DB
+        // info passed from NEW POST MODAL
         const showtitle = req.body.showtitle;
         const season = req.body.season;
         const episode = req.body.episode;
-        //const forum_id = req.body.forum_id;
-        const forum_id = 0;
 
         const userid = req.body.userid;
         const posttitle = req.body.posttitle;
         const postcontent = req.body.postcontent;
 
-
         const dbtitle = "";
         const dbseason = "";
         const dbepisode = "";
-        const dbforum_id = "";
-
-        //console.log("show title is:", showtitle)
+        var dbforum_id = "";
 
         db.query(
-            "SELECT forum_id FROM forums WHERE title = 'criminal minds' AND season = 1 AND episode = 1", 
-            [forum_id], 
+            // check if the forum exists in the forums table
+            "SELECT forum_id FROM forums WHERE title = ? AND season = ? AND episode = ?",
+            [showtitle, season, episode], 
             (err, result) => {
                 if(err) {
                     console.log(err);
                 }
-                res.status(201).send(result);
-                console.log("forum_id from db", result[0].forum_id);
+                else {
+                    if (result.length === 0) {
+                        console.log("forum not in database yet");
+                    }
+                    else {
+                        dbforum_id = result[0].forum_id;
+                        console.log("forum in database and forumID = ", dbforum_id);
+                        db.query(
+                        "INSERT INTO posts (user_id, forum_id, title, content) VALUES (?, ?, ?, ?)",
+                        [userid, dbforum_id, posttitle, postcontent],
+                        (err, result) => {
+                            if(err) {
+                                console.log(err);
+                            }
+                            console.log(result);
+                            //res.status(201).send(result);
+                        });
+                    }
+                }
             });
+
+
+                //res.status(201).send(result);
+                //console.log(result.length);
+                //console.log("the other select forum", result);
+                // if (result.length === 0) {
+                //     //if there is a forum_id already, then get the forum_id then publish to the DB 
+                //     db.query(
+                //         "SELECT forum_id FROM forums WHERE title = ? AND season = ? AND episode = ?", 
+                //         [showtitle, season, episode], 
+                //         (err, result) => {
+                //             if(err) {
+                //                 console.log(err);
+                //             }
+                //             res.status(201).send(result);
+                //             dbforum_id =  result[0].forum_id;
+                //             console.log("forum_id from db", dbforum_id);
+                //         });
+
+                //         console.log("forum_id test", dbforum_id);
+
+                    
+                    
+                //     // db.query(
+                //     //     "INSERT INTO posts (user_id, forum_id, title, content) VALUES (?, ?, ?, ?)",
+                //     //     [userid, dbforum_id, posttitle, postcontent],
+                //     //     (err, result) => {
+                //     //         if(err) {
+                //     //             console.log(err);
+                //     //         }
+                //     //         res.status(201).send(result);
+                //     //     });
+                // }
+                // else {
+                //     console.log("else case");
+
+                // }
 
 
         // if forum_id not found in db yet, i.e it's the first post under a forum then push to both forums & posts table
@@ -168,7 +248,7 @@ app.post("/newpostmodal", async (req, res) => {
             //         console.log(posttitle);
             //         console.log(postcontent);
 
-            //     });
+                //});
         //}
 
     } catch {

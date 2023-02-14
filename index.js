@@ -143,10 +143,42 @@ app.post("/newpostmodal", async (req, res) => {
                 else {
                     if (result.length === 0) {
                         console.log("forum not in database yet");
+                        // push to the forums table
+                        db.query(
+                            "INSERT INTO forums (title, season, episode) VALUES (?, ?, ?)",
+                            [showtitle, season, episode],
+                            (err, result) => {
+                                if(err) {
+                                    console.log(err);
+                                }
+                                console.log(result);
+                            });
+                        // grab from the forums the newly added forum 
+                        db.query(
+                            "SELECT forum_id FROM forums WHERE title = ? AND season = ? AND episode = ?",
+                            [showtitle, season, episode],
+                            (err, result) => {
+                                if(err) {
+                                    console.log(err);
+                                }
+                                dbforum_id = result[0].forum_id;
+                                // insert into posts 
+                                db.query(
+                                    "INSERT INTO posts (user_id, forum_id, title, content) VALUES (?, ?, ?, ?)",
+                                    [userid, dbforum_id, posttitle, postcontent],
+                                    (err, result) => {
+                                        if(err) {
+                                            console.log(err);
+                                        }
+                                        console.log(result);
+                                    });
+                            });
+                        
                     }
                     else {
                         dbforum_id = result[0].forum_id;
                         console.log("forum in database and forumID = ", dbforum_id);
+                        // insert into posts table because the forum_id exists
                         db.query(
                         "INSERT INTO posts (user_id, forum_id, title, content) VALUES (?, ?, ?, ?)",
                         [userid, dbforum_id, posttitle, postcontent],
@@ -155,7 +187,6 @@ app.post("/newpostmodal", async (req, res) => {
                                 console.log(err);
                             }
                             console.log(result);
-                            //res.status(201).send(result);
                         });
                     }
                 }

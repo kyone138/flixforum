@@ -10,11 +10,13 @@ export const Newpostmodal = (props) => {
     // need to grab from the actual froum page
     const show_title = "criminal minds"; 
     const season_number = 1; 
-    const episode_number = 1;
+    const episode_number = 4;
     //const forum_id = "1";
 
     // getting user ID
-    const user_id = localStorage.getItem('member');
+    const string_user_id = localStorage.getItem('member');
+    const user_id = Number(string_user_id);
+    //user_id = parseInt(user_id, 10);
     //console.log("user_id", user_id);
 
     // getting post title and content 

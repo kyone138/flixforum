@@ -1,3 +1,4 @@
+import { color } from '@chakra-ui/react';
 import React , { useState } from 'react';
 import { useNavigate } from "react-router";
 import SearchResult from './searchResult';

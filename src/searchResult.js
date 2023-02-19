@@ -46,6 +46,7 @@ export default function SearchResult (props) {
 
     return (
         <>
+        <Search/>
         <h2>Search Input: {query}</h2>
         </>
     );

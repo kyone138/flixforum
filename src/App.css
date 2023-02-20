@@ -1,4 +1,4 @@
-.App {
+/*.App {
   text-align: center;
   display: flex;
   min-height: 100vh;
@@ -6,11 +6,15 @@
   justify-content: center;
   color: white;
   background-image: linear-gradient(79deg, #7439db, #C66FBC 48%, #F7944D);
-}
+}*/
 
 .auth-form-container, .login-form, .register-form {
   display: flex;
   flex-direction: column;
+}
+
+.main {
+  overflow:hidden;
 }
 
 @media screen and (min-width: 600px) {

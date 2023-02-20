@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Axios from 'axios'
 import { Link, useNavigate } from "react-router-dom";
 import "./Loginpage.css";
+import CategoryContext from "../CategoryContext";
+import Logo from "../Logo/logo";
 
 
 
@@ -11,7 +13,7 @@ export const Login = () => {
     const navigate = useNavigate();
 
     //added
-    const [loginStatus, setLoginStatus] = useState("");
+    const {setLoginStatus} = useContext(CategoryContext);
 
     const login = () => {
         Axios.post("http://localhost:3001/login", {
@@ -21,7 +23,8 @@ export const Login = () => {
             if(response.data.message) {
                 setLoginStatus(response.data.message);
             } else {
-                setLoginStatus(response.data[0].username);
+                localStorage.setItem('member', JSON.stringify(response.data[0].id))
+                setLoginStatus(true);//(response.data[0].username);
                 navigate('/');
             }
         });
@@ -35,7 +38,8 @@ export const Login = () => {
     }
  
     return (
-    <>
+    <>   
+        <div className = "logo-button"><Logo/></div>
         <div className="App2">
             <div className="auth-form-container">
                 <h2>Login</h2>
@@ -48,7 +52,7 @@ export const Login = () => {
                 </form>
                 <br></br>
                 <Link to= "/register">Don't have an account? Register here.</Link> 
-                <h1>{loginStatus}</h1>
+                {/*<h1>{loginStatus}</h1>*/}
             </div>
         </div>
     </>

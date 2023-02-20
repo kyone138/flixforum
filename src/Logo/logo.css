@@ -1,0 +1,9 @@
+.logo-flixforum {
+    display: flex;
+    padding-left:22px;
+    font-family: "BebasNeue";
+    font-weight: 700;
+    font-size: 26px;
+    color: #D81F26;
+    background-color: transparent;
+ }

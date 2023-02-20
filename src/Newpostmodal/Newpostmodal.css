@@ -1,0 +1,72 @@
+.modal {
+    position:fixed;
+    left: 0;
+    top:0;
+    right:0;
+    bottom:0;
+    background-color:rgba(0,0,0,0.5);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:black;
+}
+
+.modal-content {
+    width:500px;
+    height:350px;
+    background-color: #fff;
+}
+
+.modal-header, .modal-footer {
+  padding:10px;
+}
+
+.modal-title {
+    margin: 0;
+}
+
+.comment-title {
+    padding:10px;
+    border-top:1px solid #eee;
+    border-bottom:1px solid #eee;
+}
+
+.comment-title-box {
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 450px;
+    height: 18px;
+    text-align: left;
+}
+
+.modal-post {
+    padding:10px;
+}
+
+.post-box{
+    /* border: 1px solid black; */
+    width: 450px;
+    height: 150px;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.buttonclose {
+  border: none;
+  margin-top:-20px;
+  top:1px;
+  float:right;
+  font-size: 16px;
+}
+
+.buttonsubmit {
+    background-color: black; /* Green */
+    color: #D81F26;
+    font-size: 16px;
+    float: right;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+  }

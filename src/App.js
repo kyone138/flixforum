@@ -43,7 +43,10 @@ function App() {
             </CategoryContext.Provider>}>
           </Route>
           <Route exact path='/newpostmodal' element={<Newpostmodal/>}></Route>
-          <Route exact path='/searchResult' element={<SearchResult/>}></Route>
+          <Route exact path='/searchResult' element={<CategoryContext.Provider value ={{selectedShow, setSingleShow}}> 
+            <SearchResult/>
+            </CategoryContext.Provider>}>
+          </Route>
         </Routes>
       </Router>
     </>

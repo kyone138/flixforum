@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from 'axios'
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../Logo/logo";
+import AuthLogo from "./AuthLogo";
 
 export const Register = () => {
     const [name, setName] = useState('');
@@ -22,9 +22,9 @@ export const Register = () => {
 
     return (
     <>
-    <div className = "logo-button"><Logo/></div>
     <div className="App2">
         <div className="auth-form-container">
+            <AuthLogo />
             <h2>Register</h2>
         <form className="register-form" >
             <label htmlFor="name">username</label>

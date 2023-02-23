@@ -3,7 +3,7 @@ import Axios from 'axios'
 import { Link, useNavigate } from "react-router-dom";
 import "./Loginpage.css";
 import CategoryContext from "../CategoryContext";
-import Logo from "../Logo/logo";
+import AuthLogo from "./AuthLogo";
 
 
 
@@ -39,9 +39,9 @@ export const Login = () => {
  
     return (
     <>   
-        <div className = "logo-button"><Logo/></div>
         <div className="App2">
             <div className="auth-form-container">
+                <AuthLogo />
                 <h2>Login</h2>
                 <form action='/Home' className="login-form" onSubmit={handleSubmit}>
                     <label htmlFor="email">email</label>

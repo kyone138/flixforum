@@ -12,7 +12,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: 'admin',
     host: 'flixforum-db.cdwyjlv3wddo.us-west-2.rds.amazonaws.com',
-    password: 'FlixForum',
+    password: 'FlixForumDB',
     port: '3306',
     database: 'LoginSystem',
 });

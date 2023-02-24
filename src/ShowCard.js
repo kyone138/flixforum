@@ -94,9 +94,11 @@ function ShowCard() {
                     {list.map((show) => (
                         show.summary.type == 'show' ?
                         <Card sx={{width: 225, height: 160, ml: 1}}>
-                            <CardActionArea  onClick={
-                                    () => {
+                            <CardActionArea onClick={ () => {
                                         setSingleShow(show);
+                                        localStorage.setItem('showID', JSON.stringify(show.summary.id));
+                                        localStorage.setItem('title', JSON.stringify(show.jawSummary.title));
+                                        localStorage.setItem('showImage', show.jawSummary.backgroundImage.url);
                                         navigate("/forum");
                                     }
                                 }>

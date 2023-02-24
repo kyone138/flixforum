@@ -24,12 +24,15 @@ function Forum() {
     const [show, setShow] = useState(false);
     // grabs the member info from the local storage
     const curr = localStorage.getItem('member');
+    const ID = localStorage.getItem('showID');
+    const Title = localStorage.getItem('title');
+    const Image = localStorage.getItem('showImage');
     // used to move between home and forum pages
     const navigate = useNavigate();
 
-    localStorage.setItem('title', JSON.stringify(selectedShow.jawSummary.title))
+    // localStorage.setItem('title', Title);
     // fetches the seasons of the selected show
-    const seasonQuery = 'https://netflix-data.p.rapidapi.com/title/seasons/?ids='+ selectedShow.summary.id +'&offset=0&limit=25';
+    const seasonQuery = 'https://netflix-data.p.rapidapi.com/title/seasons/?ids='+ ID +'&offset=0&limit=25';
     // grabs the seasons of a show
     useEffect(() => {
         fetch(seasonQuery, {
@@ -76,14 +79,14 @@ function Forum() {
         <Logo/>
             {/* <br></br> */}
             <div className="tvshowpicture">
-                {selectedShow && <img 
-                src={selectedShow.jawSummary.backgroundImage.url}
-                alt={selectedShow.jawSummary.title}
+                {Image && <img 
+                src={Image}
+                alt={Title}
                 height='380'
                 width='750'
                 ></img>}
             </div>
-            <div className = "show-title">{selectedShow && <div>{selectedShow.jawSummary.title} </div>}</div>
+            <div className = "show-title">{Title && <div>{Title}</div>}</div>
             <div className="dropdownSeason">
                 <Box sx={{minWidth: 20}}>
                 <FormControl fullWidth>

@@ -1,22 +1,3 @@
-// import React from 'react';
-// import { useLocation } from 'react-router-dom';
-// import Search from './searchbar';
-
-// export default function SearchResult (props) {
-
-//     const result = useLocation();
-//     console.log(result.state);
-//     let query = ''
-//     if (result.state) {
-//         console.log(JSON.stringify(result.state.message))
-//         query = JSON.stringify(result.state.message)
-//     };
-//     return (
-//         <>
-//         <h2>Search Input: {query}</h2>
-//         </>
-//     );
-// };
 import React, { useRef, useEffect, useState, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Typography from '@mui/material/Typography';
@@ -27,6 +8,7 @@ import CategoryContext from '../CategoryContext';
 import "../ShowCard.css";
 import Search from './searchbar';
 import "./searchbar.css";
+import Logo from "../Logo/logo";
 
 // MAJORITY OF CODE COMES FROM THIS VIDEO FOR DISPLAYING THE SHOWS
 // https://www.youtube.com/watch?v=FzWG8jiw4XM&ab_channel=LamaDev
@@ -71,11 +53,12 @@ function SearchResult() {
 
     return(
         <div className="list">
+             <Logo/>
             <div className='search-bar'>
                   <Search/>
             </div>
-            <br></br>          
-          <div className="recommend"> Search Results:</div>
+            <br></br> 
+            <div className="recommend"> Search Results:</div>
             <div className="wrapper">
                 <div className="container" ref={showRef}>
                     {list.map((show) => (
@@ -83,8 +66,11 @@ function SearchResult() {
                         <Card sx={{width: 225, height: 160, ml: 1}}>
                             <CardActionArea  onClick={
                                     () => {
-                                        console.log(show)
+                                        // console.log(show)
                                         setSingleShow(show);
+                                        localStorage.setItem('showID', JSON.stringify(show.summary.id));
+                                        localStorage.setItem('showTitle', JSON.stringify(show.jawSummary.title));
+                                        localStorage.setItem('showImage', show.jawSummary.backgroundImage.url);
                                         navigate("/forum");
                                     }
                                 }>

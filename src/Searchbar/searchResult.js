@@ -25,6 +25,8 @@ import Card from '@mui/material/Card';
 import { CardActionArea, CardContent, CardMedia } from "@mui/material";
 import CategoryContext from '../CategoryContext';
 import "../ShowCard.css";
+import Search from './searchbar';
+import "./searchbar.css";
 
 // MAJORITY OF CODE COMES FROM THIS VIDEO FOR DISPLAYING THE SHOWS
 // https://www.youtube.com/watch?v=FzWG8jiw4XM&ab_channel=LamaDev
@@ -69,7 +71,11 @@ function SearchResult() {
 
     return(
         <div className="list">
-            <div className="recommend"> Search Results:</div>
+            <div className='search-bar'>
+                  <Search/>
+            </div>
+            <br></br>          
+          <div className="recommend"> Search Results:</div>
             <div className="wrapper">
                 <div className="container" ref={showRef}>
                     {list.map((show) => (

@@ -71,3 +71,36 @@
       align-items: center;
       font-weight: 600;
     }
+
+
+.commentbox {
+   display:block;
+   justify-content: center;
+   border-radius:5px;
+   border: 2px solid #414141;
+   width: 420px;
+   height: 150px;
+   margin-left: 355px;
+   padding-right: 340px;
+   padding-top: 10px;
+   background-color:#414141;
+}
+
+.username {
+   margin-left: 15px;
+   padding-top: 5px;
+   border:white;
+}
+
+.post-title {
+   margin-left: 10px;
+   margin-left:30px;
+   padding-top: 20px; 
+}
+
+.post-content{
+   margin-left: 10px;
+   margin-left:30px;
+   padding-top: 20px; 
+}
+

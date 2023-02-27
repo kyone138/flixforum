@@ -133,6 +133,13 @@ function Forum() {
             </div>
             <div>{currEp && <div>{console.log("current episode id:", currEp)}</div>}</div>
             <div style={{color: '#FFFFFF'}}>{currEp && <div>curr episode: {currEp}</div>}</div>
+            <br></br>
+            <br></br>
+            <div className="commentbox">           
+                <div className="username" style={{color: '#FFFFFF'}}>Username</div>
+                <div className="post-title" style={{color: '#FFFFFF'}}>Post Title</div>
+                <div className="post-content" style={{color: '#FFFFFF'}}>Post Content</div>
+            </div>
             {
                 (loginStatus || curr) ? 
                 <div className="newpost">

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Axios from 'axios'
+import Axios from 'axios';
+import './LikeButton.css';
+import like from './like.png';
+import dislike from './dislike.png';
 
 // Credit for the overall like/dislike button logic found here:
 // https://timetoprogram.com/create-like-dislike-button-react-js/
@@ -9,6 +12,9 @@ const LikeButton = ({forum_id, post_id, user_id}) => {
   const [dislikeCount, setDislikeCount] = useState(0);
 
   const [activeBtn, setActiveBtn] = useState("none");
+
+  // const [isLiked, updateLike] = useState(false);
+
 
   // retrieve the current number of likes and dislikes
   useEffect(()=>{
@@ -49,7 +55,7 @@ const LikeButton = ({forum_id, post_id, user_id}) => {
           const like_status = response.data[0].like
           const dislike_status = response.data[0].dislike
           if (like_status === 0 && dislike_status === 0) {
-            setActiveBtn('none')
+            setActiveBtn('none');
           } else if (like_status === 1 && dislike_status === 0) {
             setActiveBtn('like')
           } else if (like_status === 0 && dislike_status === 1) {
@@ -175,21 +181,21 @@ const LikeButton = ({forum_id, post_id, user_id}) => {
     <div className="container">
       <div className="btn-container">
         <button
-          className={`btn ${activeBtn === 'like' ? 'like-active' : ''}`}
-          onClick={handleLikeClick}
-        >
-          <span className="material-symbols-rounded"></span>
-          Like {likeCount}
+          className={`like-button ${activeBtn === 'like' ? 'like-active' : ''}`}
+          onClick={handleLikeClick}>
+          <img className='like-image' src={like}></img>
+          {/* <span className="like-button"></span> */}
+          <div className='like-count'>{likeCount}</div>
         </button>
 
         <button
-          className={`btn ${activeBtn === 'dislike' ? 'dislike-active' : ''}`}
-          onClick={handleDisikeClick}
-        >
-          <span className="material-symbols-rounded"></span>
-          Dislike {dislikeCount}
+          className={`dislike-button ${activeBtn === 'dislike' ? 'dislike-active' : ''}`}
+          onClick={handleDisikeClick}>
+          <img className='dislike-image' src={dislike} ></img>
+          {/* <span className="material-symbols-dislike"></span> */}
+          <div className='dislike-count'>{dislikeCount}</div>
         </button>
-      </div>
+      </div> 
     </div>
   );
 }

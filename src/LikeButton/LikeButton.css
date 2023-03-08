@@ -3,14 +3,6 @@
     position:relative;
     flex-direction: 'row';
     align-items: center;
-    /* position:relative; */
-    /* background-color: black; */
-    /* display: flex;
-    justify-content:space-around;
-    align-items: center;
-    width: 120px;
-    padding: 15px;
-    background: #f2f2f2; */
 }
 
 .like-image {
@@ -37,11 +29,11 @@
     border-color:red; */
     background-color: transparent;
     color:white;
-    width: 10px;
     height: 40px;
     text-align: center;
     padding-top:10px;
-    padding-right:50px;
+    padding-left: 10px;
+    padding-right:10px;
     margin-left:-50px;  
 
 }
@@ -51,13 +43,13 @@
     /* border: 2px solid black;
     border-color:red; */
     background-color: transparent;
-    color:white;
-    width: 10px;
+    color:black;
     height: 40px;
     text-align: center;
+    padding-left:4px;
     padding-top:10px;
-    padding-right:50px;
-    margin-left:0px;  
+    padding-right:15px;
+    margin-left:10px;  
 }
 
 .like-count {
@@ -71,9 +63,9 @@
 }
 
 .like-active {
-    background-color: #db0000;
+    background-color: #831010;
 }
 
 .dislike-active {
-    background-color: #564d4d;
+    background-color:#dedede;
 }

@@ -1,6 +1,8 @@
 .btn-container {
     display: flex;
     position:relative;
+    flex-direction: 'row';
+    align-items: center;
     /* position:relative; */
     /* background-color: black; */
     /* display: flex;
@@ -12,16 +14,21 @@
 }
 
 .like-image {
+    display:flex;
+    align-items: center;
     width: 20px;
     height: 20px;
     margin-bottom: 30px;
-    padding-right: -10px;
+    float:left;
 }
 
 .dislike-image {
+    display:flex;
+    align-items: center;
     width: 20px;
     height: 20px;
     margin-bottom: 30px;
+    float:left;
 }
 
 .like-button {
@@ -35,7 +42,8 @@
     text-align: center;
     padding-top:10px;
     padding-right:50px;
-    margin-left:-50px;   
+    margin-left:-50px;  
+
 }
 
 .dislike-button {
@@ -44,10 +52,11 @@
     border-color:red; */
     background-color: transparent;
     color:white;
-    width: 5px;
+    width: 10px;
     height: 40px;
     text-align: center;
     padding-top:10px;
+    padding-right:50px;
     margin-left:0px;  
 }
 
@@ -61,3 +70,10 @@
     padding-left: 10px;
 }
 
+.like-active {
+    background-color: #db0000;
+}
+
+.dislike-active {
+    background-color: #564d4d;
+}

@@ -13,7 +13,7 @@ const LikeButton = ({forum_id, post_id, user_id}) => {
 
   const [activeBtn, setActiveBtn] = useState("none");
 
-  // const [isLiked, updateLike] = useState(false);
+  const [isLiked, updateLike] = useState(false);
 
 
   // retrieve the current number of likes and dislikes
